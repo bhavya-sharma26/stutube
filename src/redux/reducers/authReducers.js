@@ -7,7 +7,7 @@ const initialState = {
     loading:false 
 }
 
-const authReducers = (prevState=initialState,action)=>{
+const authReducers =(prevState=initialState,action)=>{
     const {type,payload}=action
     switch(type){
         case LOGIN_REQUEST:

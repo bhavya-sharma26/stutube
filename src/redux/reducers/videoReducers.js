@@ -1,6 +1,7 @@
+import { combineReducers } from "@reduxjs/toolkit"
 import { HOME_VIDEO_REQUEST, HOME_VIDEO_SUCCESS,HOME_VIDEO_FAIL, SELECTED_VIDEO_REQUEST, SELECTED_VIDEO_SUCCESS, SELECTED_VIDEO_FAIL } from "../actionType"
 
-export const homeVideoReducers = (state={
+const homeVideoReducers = (state={
 videos:[]
 ,loading:false,
 nextPageToken:null,
@@ -34,13 +35,11 @@ return state
 }
 }
 
-export const selectedVideoReducers = (
+const selectedVideoReducers = (
     state={
     loading:true,video:null
-},
-action
-)=>{
-    const {payload,action}=action
+},action)=>{
+    const {payload,type}=action
     switch(type){
         case SELECTED_VIDEO_REQUEST:
             return{
@@ -63,3 +62,4 @@ action
             return state
     }
 }
+export default combineReducers(selectedVideoReducers,homeVideoReducers)
